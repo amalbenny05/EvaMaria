@@ -61,7 +61,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'files#{file.file_id}'
+                    text=f"[♲︎︎︎{get_size(file.file_size)}] ➪{file.file_name}", callback_data=f'files#{file.file_id}'
                 ),
             ]
             for file in files
@@ -96,7 +96,7 @@ async def next_page(bot, query):
         btn.append(
             [
                 InlineKeyboardButton("⏪ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
-                InlineKeyboardButton(f"🗓 {round(int(offset)/10)+1} / {round(total/10)}", callback_data="pages"),
+                InlineKeyboardButton(f"📂 {round(int(offset)/10)+1} / {round(total/10)}", callback_data="pages"),
                 InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")
             ],
         )
@@ -601,11 +601,11 @@ async def auto_filter(client, msg, spoll=False):
         BUTTONS[key] = search
         req = message.from_user.id if message.from_user else 0
         btn.append(
-            [InlineKeyboardButton(text=f"🗓 1/{round(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="NEXT ⏩",callback_data=f"next_{req}_{key}_{offset}")]
+            [InlineKeyboardButton(text=f"📂 1/{round(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="NEXT ⏩",callback_data=f"next_{req}_{key}_{offset}")]
         )
     else:
         btn.append(
-            [InlineKeyboardButton(text="🗓 1/1",callback_data="pages")]
+            [InlineKeyboardButton(text="📂 1/1",callback_data="pages")]
         )
     imdb = await get_poster(search, file=(files[0]).file_name) if IMDB else None
     if imdb:
